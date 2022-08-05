@@ -17,7 +17,7 @@ public class UserInfo {
     private Integer id;
     private String firstName;
     private String lastName;
-    private Role role;
+    private String role;
     private boolean active= true;
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime updatedAt = LocalDateTime.now();
@@ -42,10 +42,10 @@ public class UserInfo {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
     public boolean isActive() {
@@ -66,16 +66,14 @@ public class UserInfo {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-    // to string [] 
     @Override
+    
+    // to string [] 
+
     public String toString() {
         return "UserInfo [active=" + active + ", createdAt=" + createdAt + ", firstName=" + firstName + ", id=" + id
                 + ", lastName=" + lastName + ", role=" + role + ", updatedAt=" + updatedAt + "]";
     }
-
-    // hash code {} 
-
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -133,4 +131,8 @@ public class UserInfo {
         return true;
     }
     
+
+    
+
 }
+
