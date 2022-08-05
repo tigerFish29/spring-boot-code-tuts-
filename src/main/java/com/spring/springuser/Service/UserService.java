@@ -1,5 +1,7 @@
 package com.spring.springuser.Service;
 
+import java.util.List;
+
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +27,17 @@ public class UserService {
         }
         return null;
     }
+
+    // create a user {} 
+    public UserInfo createUser(UserInfo userInfo) {
+        return userRepository.save(userInfo);
+    }
+
+    // get users {} 
+    public List<UserInfo> getUsers() {
+        return userRepository.findAllByActiveOrderByIdDesc(true);
+    }
+
+    
     
 }
