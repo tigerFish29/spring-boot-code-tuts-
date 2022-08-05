@@ -1,5 +1,6 @@
 package com.spring.springuser.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
@@ -38,6 +39,15 @@ public class UserService {
         return userRepository.findAllByActiveOrderByIdDesc(true);
     }
 
-    
+    // update a user{}
+    public UserInfo updateUser(Integer id, UserInfo request) {
+        UserInfo fromDB = getUser(id);
+        fromDB.setFirstName(request.getFirstName());
+        fromDB.setLastName(request.getLastName());
+        fromDB.setRole(request.getRole());
+        fromDB.setActive(request.isActive());
+        fromDB.setUpdatedAt(LocalDateTime.now());
+        return userRepository.save(fromDB);
+    }
     
 }
