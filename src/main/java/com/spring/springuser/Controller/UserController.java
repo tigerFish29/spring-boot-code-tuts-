@@ -51,5 +51,15 @@ public class UserController {
         return redirectView;
     }
 
+    // crud update 
+    @RequestMapping(path="/{id}", method = RequestMethod.POST) 
+    public RedirectView updateUser(RedirectAttributes redirects, @PathVariable("id") Integer id, @ModelAttribute UserInfo userInfo) {
+        userService.updateUser(id, userInfo);
+        String message = (userInfo.isActive() ? "Updated" : "Deleted") + "user <b>" + userInfo.getFirstName() + " " + userInfo.getLastName() + "</b> .";
+        RedirectView redirectView = new RedirectView("/", true);
+        redirects.addFlashAttribute("userMessage", message);
+        return redirectView;
+    }
+
     
 }
